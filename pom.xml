@@ -60,7 +60,15 @@
 
     <!-- Child modules — we will add each service here as we create them -->
     <modules>
-        <!-- modules will appear here one by one as we add them -->
+        <module>discovery-service</module>
+        <module>config-service</module>
+        <module>api-gateway</module>
+        <module>user-service</module>
+        <module>goal-service</module>
+        <module>habit-service</module>
+        <module>job-tracker-service</module>
+        <module>ai-coach-service</module>
+        <module>notification-service</module>
     </modules>
 
 </project>
