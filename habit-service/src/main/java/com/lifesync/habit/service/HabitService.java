@@ -1,5 +1,6 @@
 package com.lifesync.habit.service;
 
+import com.lifesync.habit.dto.HabitCheckinEvent;
 import com.lifesync.habit.dto.HabitRequest;
 import com.lifesync.habit.dto.HabitResponse;
 import com.lifesync.habit.dto.StreakResponse;
@@ -22,6 +23,7 @@ public class HabitService {
 
     private final HabitRepository habitRepository;
     private final HabitLogRepository habitLogRepository;
+    private final HabitEventProducer eventProducer;
 
     public HabitResponse createHabit(String userEmail, HabitRequest request) {
         HabitFrequency frequency = HabitFrequency.DAILY;
@@ -91,6 +93,17 @@ public class HabitService {
         if (habit.getCurrentStreak() > habit.getLongestStreak()) {
             habit.setLongestStreak(habit.getCurrentStreak());
         }
+
+        HabitCheckinEvent event = HabitCheckinEvent.builder()
+                .userEmail(userEmail)
+                .habitName(habit.getName())
+                .currentStreak(habit.getCurrentStreak())
+                .longestStreak(habit.getLongestStreak())
+                .checkDate(LocalDate.now())
+                .eventType(habit.getCurrentStreak() % 7 == 0 ? "STREAK_MILESTONE" : "CHECKIN")
+                .build();
+
+        eventProducer.publishCheckinEvent(event);
 
         return mapToResponse(habitRepository.save(habit));
     }

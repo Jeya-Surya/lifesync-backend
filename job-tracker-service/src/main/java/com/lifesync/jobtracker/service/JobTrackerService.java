@@ -18,6 +18,7 @@ public class JobTrackerService {
 
     private final JobApplicationRepository jobApplicationRepository;
     private final InterviewRoundRepository interviewRoundRepository;
+    private final JobEventProducer eventProducer;
 
     public JobApplicationResponse createApplication(String userEmail, JobApplicationRequest request) {
         JobApplication application = JobApplication.builder()
@@ -69,6 +70,18 @@ public class JobTrackerService {
         ApplicationStatus newStatus = ApplicationStatus.valueOf(request.getStatus().toUpperCase());
 
         application.setStatus(newStatus);
+
+        JobStatusEvent event = JobStatusEvent.builder()
+                .userEmail(userEmail)
+                .companyName(application.getCompanyName())
+                .role(application.getRole())
+                .oldStatus(application.getStatus().name())
+                .newStatus(newStatus.name())
+                .eventType(newStatus == ApplicationStatus.OFFER ? "OFFER_RECEIVED" : "STATUS_CHANGED")
+                .build();
+
+        eventProducer.publishStatusEvent(event);
+
         return mapToResponse(jobApplicationRepository.save(application));
     }
 
