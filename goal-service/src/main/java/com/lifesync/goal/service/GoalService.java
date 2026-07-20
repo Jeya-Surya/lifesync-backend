@@ -72,7 +72,7 @@ public class GoalService {
                 .orElseThrow(() -> new RuntimeException("Goal not found"));
 
         Milestone milestone = Milestone.builder()
-                .tile(request.getTitle())
+                .title(request.getTitle())
                 .dueDate(request.getDueDate())
                 .goal(goal)
                 .build();

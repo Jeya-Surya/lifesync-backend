@@ -18,7 +18,7 @@ public class Milestone {
     private Long id;
 
     @Column(nullable = false)
-    private String tile;
+    private String title;
 
     @Builder.Default
     private Boolean isCompleted = false;
