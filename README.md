@@ -24,7 +24,6 @@ LifeSync is a **Personal Life OS** built with Spring Boot Microservices. It help
 
 ## 🏗️ Architecture
 
-```text
 React Frontend (Vite + Tailwind)
 ↓
 API Gateway (Spring Cloud Gateway) — port 8080
@@ -38,7 +37,7 @@ Eureka Service Registry — port 8761
 └─────────────────────────────────────────────┘
 ↓
 PostgreSQL (5 isolated databases) + Apache Kafka
-```
+
 ---
 
 ## 🧩 Microservices
