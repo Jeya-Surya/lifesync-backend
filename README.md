@@ -185,8 +185,7 @@ PUT /api/notifications/read-all
 ---
 
 ## 👨‍💻 Author
-
-**Jeya Surya** 
+**Jeya Surya**  
 Bachelor of Technology in Computer Science and Business Systems
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat-square&logo=linkedin)](https://linkedin.com/in/jeyasuryads)
