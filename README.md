@@ -18,7 +18,7 @@
 
 LifeSync is a **Personal Life OS** built with Spring Boot Microservices. It helps users track goals, build habits, manage job applications, and receive AI-powered daily coaching — all in one place.
 
-> Built by [Surya](https://github.com/Jeya-Surya) as a full-stack portfolio project demonstrating production-grade microservices architecture.
+> Built by [Jeya Surya](https://github.com/Jeya-Surya) as a full-stack portfolio project demonstrating production-grade microservices architecture.
 
 ---
 
@@ -38,7 +38,7 @@ Eureka Service Registry — port 8761
 └─────────────────────────────────────────────┘
 ↓
 PostgreSQL (5 isolated databases) + Apache Kafka
-
+```
 ---
 
 ## 🧩 Microservices
@@ -135,6 +135,7 @@ Start services in this order:
 POST /api/auth/register
 POST /api/auth/login
 GET /api/users/me
+```
 
 ---
 
@@ -148,42 +149,45 @@ DELETE /api/goals/{id}
 POST /api/goals/{id}/milestones
 PATCH /api/goals/{id}/milestones/{mId}/complete
 DELETE /api/goals/{id}/milestones/{mId}
+```
 
 ### Habits
-
+```text
 POST /api/habits
 GET /api/habits
 POST /api/habits/{id}/checkin
 GET /api/habits/{id}/streak
 GET /api/habits/{id}/logs
-
+```
 
 ### Job Tracker
-
+```text
 POST /api/jobs
 GET /api/jobs
 PATCH /api/jobs/{id}/status
 POST /api/jobs/{id}/rounds
 GET /api/jobs/stats
-
+```
 
 ### AI Coach
-
+```text
 GET /api/coach/briefing
-
+```
 
 ### Notifications
-
+```text
 GET /api/notifications
 GET /api/notifications/unread
 GET /api/notifications/count
 PUT /api/notifications/read-all
+```
 
 ---
 
 ## 👨‍💻 Author
 
-**Jeya Surya** — Final year B.Tech CSE student at Jeppiaar Institute of Technology
+**Jeya Surya** 
+Bachelor of Technology in Computer Science and Business Systems
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat-square&logo=linkedin)](https://linkedin.com/in/jeyasuryads)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=flat-square&logo=github)](https://github.com/Jeya-Surya)
